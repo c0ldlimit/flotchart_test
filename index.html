@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<head>
+<title></title>
+
+<script type="text/javascript" src="js/flot/jquery.js"></script>
+<script type="text/javascript" src="js/flot/excanvas.min.js"></script>
+<script type="text/javascript" src="js/flot/jquery.flot.js"></script>
+<script type="text/javascript" src="js/dataTables/jquery.dataTables.js"></script>
+<script>
+
+
+function line_chart(thedata,id_chart) {
+	$.plot($(id_chart), [
+          {
+               data: thedata
+			}
+     ]);
+}
+
+function bar_chart(thedata,id_chart,options) {
+	
+	$.plot($(id_chart), [
+          {
+               data: thedata,       
+			   bars: { show: true, align: "center" },
+			   color: "#454d7d"
+			}
+     ],options);
+}
+
+$(function() {
+	 var myData = [[1, 2010], [2, 2543], [3, 2520], [4, 2354]];
+	 var baroptions = { xaxis: {ticks: [[1,"Spring"], [2, "Summer"], [3, "Autumn"], [4, "Winter"]] } }
+	 var id_chart = "#mycanvas"
+     line_chart(myData,id_chart)
+	 var id_chart = "#barcanvas"
+	 bar_chart(myData,id_chart,baroptions)
+	 var newData = [[1, 10], [2, 43], [3, 20], [4, 54]];
+	 var id_chart = "#barcanvas_second"
+	 bar_chart(newData,id_chart,baroptions)
+	 
+
+});
+
+
+
+</script>
+
+
+<style>
+body {
+     font-family: Arial;
+}
+
+div.canvas {
+     width: 500px;
+     height: 300px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="mycanvas", class="canvas">
+
+</div>
+
+<div id="barcanvas", class="canvas">
+</div>
+
+<div id="barcanvas_second", class="canvas">
+</div>
+
+
+
+
+</body>
+</html>
